@@ -35,3 +35,13 @@ int main()
     cout << "Index of the key is" << index << endl;
     return 0;
 }
+
+/*for optimization of the mid
+mid=start+(end-start)/2;
+
+we have used this becuase the mid=(start+end)/2
+is out of interger range like start=2^31-1 and end=2^31-1 and if we add both it will be out of range
+
+
+time complexity =O(log n)
+*/
