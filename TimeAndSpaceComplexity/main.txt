@@ -1,0 +1,585 @@
+================================================================
+        TIME AND SPACE COMPLEXITY NOTES
+        (With Examples | No Recursion Complexity)
+================================================================
+
+----------------------------------------------------------------
+1. WHAT IS COMPLEXITY ANALYSIS?
+----------------------------------------------------------------
+
+When we write code, two big questions come up:
+  - How FAST does it run?         --> Time Complexity
+  - How much MEMORY does it use?  --> Space Complexity
+
+We use Big O Notation to express this.
+Big O tells us how the algorithm behaves as input size (n) grows.
+
+We always care about the WORST CASE unless stated otherwise.
+
+
+----------------------------------------------------------------
+2. BIG O NOTATION — THE COMMON ONES
+----------------------------------------------------------------
+
+O(1)        --> Constant
+O(log n)    --> Logarithmic
+O(n)        --> Linear
+O(n log n)  --> Linearithmic
+O(n^2)      --> Quadratic
+O(n^3)      --> Cubic
+O(2^n)      --> Exponential
+O(n!)       --> Factorial
+
+Order from BEST to WORST:
+O(1) < O(log n) < O(n) < O(n log n) < O(n^2) < O(2^n) < O(n!)
+
+
+----------------------------------------------------------------
+3. TIME COMPLEXITY
+----------------------------------------------------------------
+
+Time complexity = how the NUMBER OF OPERATIONS grows with input size n.
+
+We don't measure actual seconds — machines differ.
+We count steps/operations instead.
+
+
+-----------------------------
+3.1 O(1) — Constant Time
+-----------------------------
+
+No matter how big the input, it always takes the same number of steps.
+
+Example:
+  function getFirstElement(arr) {
+    return arr[0];   // always 1 operation
+  }
+
+  getFirstElement([10, 20, 30])     --> 1 step
+  getFirstElement([10, 20, ..., 1000000]) --> still 1 step
+
+Real life analogy:
+  Checking what's on page 1 of a book.
+  Doesn't matter if the book has 10 pages or 1000 pages.
+
+
+-----------------------------
+3.2 O(log n) — Logarithmic Time
+-----------------------------
+
+Input is divided (usually by 2) at each step.
+Very efficient for large inputs.
+
+Example: Binary Search
+  You have a SORTED array. You keep cutting it in half.
+
+  arr = [1, 3, 5, 7, 9, 11, 13, 15]
+  Find: 7
+
+  Step 1: mid = index 3 → value 7 → Found! (1 step here)
+
+  Worst case with 8 elements → max 3 steps (log2(8) = 3)
+  With 1,000,000 elements → max ~20 steps (log2(1000000) ≈ 20)
+
+Code:
+  function binarySearch(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
+
+    while (left <= right) {
+      let mid = Math.floor((left + right) / 2);
+
+      if (arr[mid] === target) return mid;
+      else if (arr[mid] < target) left = mid + 1;
+      else right = mid - 1;
+    }
+    return -1;
+  }
+
+Real life analogy:
+  Finding a word in a dictionary by opening to the middle,
+  then deciding left half or right half, and repeating.
+
+
+-----------------------------
+3.3 O(n) — Linear Time
+-----------------------------
+
+Operations grow directly with input size.
+If input doubles, operations double.
+
+Example: Linear Search
+  function linearSearch(arr, target) {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === target) return i;
+    }
+    return -1;
+  }
+
+  arr = [5, 3, 8, 1, 9]
+  Find 9 --> worst case: check all 5 elements
+
+  n = 5   --> 5 steps
+  n = 100 --> 100 steps
+
+Real life analogy:
+  Looking for your friend in a crowd by checking each person one by one.
+
+
+-----------------------------
+3.4 O(n log n) — Linearithmic Time
+-----------------------------
+
+Common in efficient sorting algorithms.
+Slightly worse than linear but much better than quadratic.
+
+Example: Merge Sort, Quick Sort (average case)
+
+  Merge Sort splits array in half (log n levels),
+  and at each level processes all n elements.
+  So total = n * log n
+
+  n = 8 elements:
+    Level 1: split into 2 halves (4+4)
+    Level 2: split into 4 parts (2+2+2+2)
+    Level 3: split into 8 singles
+    Then merge back --> 3 levels * 8 elements = 24 operations ≈ n log n
+
+Real life analogy:
+  Sorting a deck of cards by splitting into halves,
+  sorting each half, then merging them back together.
+
+
+-----------------------------
+3.5 O(n^2) — Quadratic Time
+-----------------------------
+
+Nested loops. For every element, you loop through all elements again.
+Gets slow fast.
+
+Example: Bubble Sort
+  function bubbleSort(arr) {
+    for (let i = 0; i < arr.length; i++) {         // outer loop
+      for (let j = 0; j < arr.length - 1; j++) {   // inner loop
+        if (arr[j] > arr[j+1]) {
+          let temp = arr[j];
+          arr[j] = arr[j+1];
+          arr[j+1] = temp;
+        }
+      }
+    }
+    return arr;
+  }
+
+  n = 5   -->  25 operations
+  n = 100 --> 10,000 operations
+  n = 1000 --> 1,000,000 operations
+
+Another example: Find all pairs in array
+  function findAllPairs(arr) {
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = 0; j < arr.length; j++) {
+        console.log(arr[i], arr[j]);
+      }
+    }
+  }
+
+Real life analogy:
+  If you're at a party and every person shakes hands with every other person.
+  5 people = 25 handshakes (roughly).
+
+
+-----------------------------
+3.6 O(n^3) — Cubic Time
+-----------------------------
+
+Three nested loops. Rare but it exists (e.g., naive matrix multiplication).
+
+Example:
+  function tripleLoop(arr) {
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = 0; j < arr.length; j++) {
+        for (let k = 0; k < arr.length; k++) {
+          console.log(arr[i], arr[j], arr[k]);
+        }
+      }
+    }
+  }
+
+  n = 10 --> 1,000 operations
+  n = 100 --> 1,000,000 operations
+
+Avoid this whenever possible.
+
+
+-----------------------------
+3.7 O(2^n) — Exponential Time
+-----------------------------
+
+Operations DOUBLE with each addition to input.
+Very dangerous for large inputs.
+
+Example: Finding all subsets of a set
+  For set [1, 2, 3]:
+    Subsets: [], [1], [2], [3], [1,2], [1,3], [2,3], [1,2,3]
+    = 8 subsets = 2^3
+
+  n=10 --> 1,024 subsets
+  n=20 --> 1,048,576 subsets
+  n=30 --> 1,073,741,824 subsets  ← already too slow
+
+Real life analogy:
+  A lock with n yes/no switches.
+  Every new switch doubles the number of combinations.
+
+
+-----------------------------
+3.8 O(n!) — Factorial Time
+-----------------------------
+
+The worst. Used in brute force problems like "find all permutations".
+
+  n=1 --> 1
+  n=3 --> 6
+  n=5 --> 120
+  n=10 --> 3,628,800
+  n=15 --> 1,307,674,368,000  ← basically unusable
+
+Example use case: Traveling Salesman Problem (brute force)
+  Check every possible route through n cities.
+
+
+----------------------------------------------------------------
+4. HOW TO IDENTIFY TIME COMPLEXITY QUICKLY
+----------------------------------------------------------------
+
+RULE 1: Single loop = O(n)
+  for (let i = 0; i < n; i++) { ... }
+
+RULE 2: Nested loops = O(n^2), O(n^3)...
+  for i in n:
+    for j in n:      --> O(n^2)
+      for k in n:    --> O(n^3)
+
+RULE 3: Halving/doubling = O(log n)
+  while (n > 1) { n = Math.floor(n / 2); }
+
+RULE 4: Loop + halving = O(n log n)
+  Seen in Merge Sort, Heap Sort
+
+RULE 5: Multiple separate loops = ADD them = O(n + m) or simplified O(n)
+  for i in n: ...    // O(n)
+  for j in m: ...    // O(m)
+  Total = O(n + m)   // not O(n * m)
+
+RULE 6: Drop constants
+  O(2n) → O(n)
+  O(5n^2 + 3n + 100) → O(n^2)   (highest term wins)
+
+
+----------------------------------------------------------------
+5. SPACE COMPLEXITY
+----------------------------------------------------------------
+
+Space complexity = how much EXTRA MEMORY your algorithm uses
+as input grows.
+
+We only count EXTRA space — not the input itself (usually).
+
+
+-----------------------------
+5.1 O(1) — Constant Space
+-----------------------------
+
+Uses same amount of memory regardless of input size.
+Only a few variables, no extra arrays.
+
+Example:
+  function sum(arr) {
+    let total = 0;           // 1 variable
+    for (let i = 0; i < arr.length; i++) {
+      total += arr[i];
+    }
+    return total;
+  }
+
+  Extra space used: just `total` and `i` → O(1)
+
+
+-----------------------------
+5.2 O(n) — Linear Space
+-----------------------------
+
+Extra memory grows with input size.
+Usually when you create a new array/list of size n.
+
+Example:
+  function doubleAll(arr) {
+    let result = [];             // new array of size n
+    for (let i = 0; i < arr.length; i++) {
+      result.push(arr[i] * 2);
+    }
+    return result;
+  }
+
+  Extra space: result array = n elements → O(n)
+
+Another example: Storing all elements in a hash map
+  function countFrequency(arr) {
+    let map = {};
+    for (let val of arr) {
+      map[val] = (map[val] || 0) + 1;
+    }
+    return map;
+  }
+  Space = O(n) because map can hold n entries
+
+
+-----------------------------
+5.3 O(n^2) — Quadratic Space
+-----------------------------
+
+Creating a 2D matrix or grid of size n x n.
+
+Example:
+  function createMatrix(n) {
+    let matrix = [];
+    for (let i = 0; i < n; i++) {
+      matrix[i] = new Array(n).fill(0);   // n x n grid
+    }
+    return matrix;
+  }
+
+  n = 3 --> 9 cells
+  n = 100 --> 10,000 cells
+  Space = O(n^2)
+
+
+----------------------------------------------------------------
+6. TIME vs SPACE — TRADEOFF
+----------------------------------------------------------------
+
+Often, you can trade one for the other:
+
+EXAMPLE: Check if array has duplicates
+
+Option A — O(n^2) time, O(1) space:
+  Compare every pair with nested loops.
+  Slow but uses almost no memory.
+
+  function hasDuplicate(arr) {
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = i + 1; j < arr.length; j++) {
+        if (arr[i] === arr[j]) return true;
+      }
+    }
+    return false;
+  }
+
+Option B — O(n) time, O(n) space:
+  Use a Set to remember seen values.
+  Fast but uses extra memory.
+
+  function hasDuplicate(arr) {
+    let seen = new Set();
+    for (let val of arr) {
+      if (seen.has(val)) return true;
+      seen.add(val);
+    }
+    return false;
+  }
+
+--> Option B is usually preferred (speed > memory in most real apps).
+
+
+----------------------------------------------------------------
+7. BEST / AVERAGE / WORST CASE
+----------------------------------------------------------------
+
+For the same algorithm, complexity can vary:
+
+Example: Linear Search in arr = [3, 7, 1, 9, 4], find target
+
+  Best Case:   Target is at index 0    → O(1)  (found immediately)
+  Average Case: Target is in the middle → O(n/2) = O(n)
+  Worst Case:  Target is at the end or not present → O(n)
+
+We almost always talk about WORST CASE in Big O.
+
+
+----------------------------------------------------------------
+8. COMMON DATA STRUCTURE OPERATIONS — TIME COMPLEXITY
+----------------------------------------------------------------
+
+ARRAY:
+  Access by index       --> O(1)
+  Search (unsorted)     --> O(n)
+  Search (sorted, bin)  --> O(log n)
+  Insert at end         --> O(1) amortized
+  Insert at middle      --> O(n)
+  Delete at middle      --> O(n)
+
+OBJECT / HASH MAP:
+  Insert key-value      --> O(1) average
+  Lookup by key         --> O(1) average
+  Delete by key         --> O(1) average
+
+SET:
+  Add                   --> O(1) average
+  Has (lookup)          --> O(1) average
+  Delete                --> O(1) average
+
+STACK (array-based):
+  Push                  --> O(1)
+  Pop                   --> O(1)
+  Peek                  --> O(1)
+
+QUEUE (array-based):
+  Enqueue (push end)    --> O(1)
+  Dequeue (shift front) --> O(n) with array, O(1) with linked list
+
+LINKED LIST:
+  Access by index       --> O(n)
+  Insert at head        --> O(1)
+  Insert at tail        --> O(1) if tail pointer exists
+  Search                --> O(n)
+  Delete at head        --> O(1)
+
+BINARY SEARCH TREE (balanced):
+  Search                --> O(log n)
+  Insert                --> O(log n)
+  Delete                --> O(log n)
+
+BINARY SEARCH TREE (unbalanced/worst):
+  All above             --> O(n)
+
+
+----------------------------------------------------------------
+9. COMMON SORTING ALGORITHMS — COMPLEXITY
+----------------------------------------------------------------
+
+Algorithm       | Best      | Average   | Worst     | Space
+----------------|-----------|-----------|-----------|-------
+Bubble Sort     | O(n)      | O(n^2)    | O(n^2)    | O(1)
+Selection Sort  | O(n^2)    | O(n^2)    | O(n^2)    | O(1)
+Insertion Sort  | O(n)      | O(n^2)    | O(n^2)    | O(1)
+Merge Sort      | O(n log n)| O(n log n)| O(n log n)| O(n)
+Quick Sort      | O(n log n)| O(n log n)| O(n^2)    | O(log n)
+Heap Sort       | O(n log n)| O(n log n)| O(n log n)| O(1)
+
+Notes:
+- Insertion Sort is great for nearly-sorted or small arrays.
+- Merge Sort is stable and consistent but uses extra O(n) space.
+- Quick Sort is fast in practice but worst case is O(n^2) if pivot is bad.
+- Heap Sort is in-place and O(n log n) always, but slower in practice.
+
+
+----------------------------------------------------------------
+10. REAL WORLD EXAMPLES — PUTTING IT TOGETHER
+----------------------------------------------------------------
+
+EXAMPLE 1: Count characters in a string
+  function charCount(str) {
+    let map = {};
+    for (let char of str) {        // O(n) time
+      map[char] = (map[char] || 0) + 1;
+    }
+    return map;
+  }
+  Time: O(n)   Space: O(n)
+
+
+EXAMPLE 2: Check if two strings are anagrams
+  function isAnagram(s1, s2) {
+    if (s1.length !== s2.length) return false;
+
+    let map = {};
+    for (let c of s1) map[c] = (map[c] || 0) + 1;   // O(n)
+    for (let c of s2) {                               // O(n)
+      if (!map[c]) return false;
+      map[c]--;
+    }
+    return true;
+  }
+  Time: O(n)   Space: O(n)
+
+
+EXAMPLE 3: Find max in array
+  function findMax(arr) {
+    let max = arr[0];
+    for (let i = 1; i < arr.length; i++) {   // O(n)
+      if (arr[i] > max) max = arr[i];
+    }
+    return max;
+  }
+  Time: O(n)   Space: O(1)
+
+
+EXAMPLE 4: Two Sum (find two numbers that add to target)
+  function twoSum(arr, target) {
+    let map = {};
+    for (let i = 0; i < arr.length; i++) {
+      let complement = target - arr[i];
+      if (map[complement] !== undefined) {
+        return [map[complement], i];
+      }
+      map[arr[i]] = i;
+    }
+    return [];
+  }
+  Time: O(n)   Space: O(n)
+  (Better than O(n^2) brute force nested loop approach)
+
+
+EXAMPLE 5: Matrix traversal
+  function printMatrix(matrix) {
+    for (let i = 0; i < matrix.length; i++) {           // n rows
+      for (let j = 0; j < matrix[i].length; j++) {      // m cols
+        console.log(matrix[i][j]);
+      }
+    }
+  }
+  Time: O(n * m) → if square matrix → O(n^2)
+  Space: O(1) (not creating anything new)
+
+
+----------------------------------------------------------------
+11. QUICK CHEAT SHEET
+----------------------------------------------------------------
+
+Pattern                          | Time Complexity
+---------------------------------|----------------
+Single loop over n               | O(n)
+Two nested loops over n          | O(n^2)
+Three nested loops over n        | O(n^3)
+Divide input in half each step   | O(log n)
+Loop + divide                    | O(n log n)
+All subsets of input             | O(2^n)
+All permutations of input        | O(n!)
+Access by index/key              | O(1)
+Hash map insert/lookup           | O(1) avg
+
+Memory                           | Space Complexity
+---------------------------------|----------------
+Fixed variables only             | O(1)
+New array/list of size n         | O(n)
+2D grid of size n x n            | O(n^2)
+Storing each element once        | O(n)
+
+
+----------------------------------------------------------------
+12. TIPS TO REMEMBER
+----------------------------------------------------------------
+
+1. Big O = worst case, upper bound.
+2. Drop constants: O(3n) = O(n), O(n^2 + n) = O(n^2).
+3. Separate loops = ADD: O(n) + O(m) = O(n + m).
+4. Nested loops = MULTIPLY: O(n) * O(n) = O(n^2).
+5. Halving = log n.
+6. To improve time: often spend more space (use hash map, set).
+7. To improve space: often spend more time (in-place algorithms).
+8. Always ask: what's the input size? n = 10 or n = 10,000,000?
+
+================================================================
+                        END OF NOTES
+================================================================
