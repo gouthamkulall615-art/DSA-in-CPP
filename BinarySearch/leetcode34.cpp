@@ -59,6 +59,6 @@ int main()
     int arr[6] = {1, 2, 3, 3, 5};
     int first = firstOcc(arr, 6, 3);
     int last = lastOcc(arr, 6, 3);
-    cout << "the indice of the first and last occurence is " << first << " " << last;9git
+    cout << "the indice of the first and last occurence is " << first << " " << last;
     return 0;
 }
