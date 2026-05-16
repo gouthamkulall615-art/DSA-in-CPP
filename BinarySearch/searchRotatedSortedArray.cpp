@@ -48,14 +48,17 @@ int binarySearch(int arr[], int start, int end, int key)
 }
 
 int findPostion(int arr[], int n, int k)
+
 {
     int pivot = getPivot(arr, n);
     if (k >= arr[pivot] && k <= arr[n - 1])
-    {
+
+    { // search in the second sorted part
         return binarySearch(arr, pivot, n - 1, k);
     }
     else
     {
+        // search in the first sorted part
         return binarySearch(arr, 0, n - 1, k);
     }
 }
