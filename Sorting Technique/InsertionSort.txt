@@ -1,0 +1,122 @@
+Initial Array:
+[10,1,7,4,8,2,11]
+
+--------------- ROUND 1 ---------------
+
+Current Array:
+[10,1,7,4,8,2,11]
+
+Key = 1
+
+1 < 10 → move 10 one position to the right
+
+[10,10,7,4,8,2,11]
+
+Place 1 at index 0
+
+[1,10,7,4,8,2,11]
+
+
+--------------- ROUND 2 ---------------
+
+Current Array:
+[1,10,7,4,8,2,11]
+
+Key = 7
+
+7 < 10 → move 10 one position to the right
+
+[1,10,10,4,8,2,11]
+
+7 > 1 → correct position found
+
+Place 7 after 1
+
+[1,7,10,4,8,2,11]
+
+
+--------------- ROUND 3 ---------------
+
+Current Array:
+[1,7,10,4,8,2,11]
+
+Key = 4
+
+4 < 10 → move 10 right
+
+[1,7,10,10,8,2,11]
+
+4 < 7 → move 7 right
+
+[1,7,7,10,8,2,11]
+
+4 > 1 → correct position found
+
+Place 4 after 1
+
+[1,4,7,10,8,2,11]
+
+
+--------------- ROUND 4 ---------------
+
+Current Array:
+[1,4,7,10,8,2,11]
+
+Key = 8
+
+8 < 10 → move 10 right
+
+[1,4,7,10,10,2,11]
+
+8 > 7 → correct position found
+
+Place 8 after 7
+
+[1,4,7,8,10,2,11]
+
+
+--------------- ROUND 5 ---------------
+
+Current Array:
+[1,4,7,8,10,2,11]
+
+Key = 2
+
+2 < 10 → move 10 right
+
+[1,4,7,8,10,10,11]
+
+2 < 8 → move 8 right
+
+[1,4,7,8,8,10,11]
+
+2 < 7 → move 7 right
+
+[1,4,7,7,8,10,11]
+
+2 < 4 → move 4 right
+
+[1,4,4,7,8,10,11]
+
+2 > 1 → correct position found
+
+Place 2 after 1
+
+[1,2,4,7,8,10,11]
+
+
+--------------- ROUND 6 ---------------
+
+Current Array:
+[1,2,4,7,8,10,11]
+
+Key = 11
+
+11 > 10 → already in correct position
+
+[1,2,4,7,8,10,11]
+
+
+FINAL SORTED ARRAY
+
+[1,2,4,7,8,10,11]

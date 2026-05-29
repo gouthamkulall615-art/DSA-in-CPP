@@ -101,3 +101,12 @@ Array is already sorted
 
 Final Sorted Array:
 [1,6,7,9,10,14]
+
+
+-----------TIME COMPLEXITY---------------
+
+O(n^2)
+
+-----------SPACE COMPLEXITY---------------
+
+O(1)
