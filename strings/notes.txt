@@ -6,3 +6,32 @@ char arr[4]: is called character array
 
 
 
+===================================================
+stringstream ss(s);
+
+Meaning:
+Treat the string 's' like cin.
+
+Example:
+string s = "the sky is blue";
+
+stringstream ss(s);
+
+while(ss >> word)
+{
+    // gets one word at a time
+}
+
+Output:
+the
+sky
+is
+blue
+
+Memory Trick:
+cin >> word   -> reads from keyboard
+ss  >> word   -> reads from string
+
+Use:
+Split a string into words automatically.
+Ignores extra spaces, leading spaces, and trailing spaces.
