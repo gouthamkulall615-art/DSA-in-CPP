@@ -1,0 +1,8 @@
+string : has the null character '\o'
+
+ex:[b,a,,b,a,r,\o];
+
+char arr[4]: is called character array
+
+
+
