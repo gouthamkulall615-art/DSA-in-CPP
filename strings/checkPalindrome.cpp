@@ -1,29 +1,38 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-string reverseString(string str,int n){
-       for(int i=0;i<n/2;i++){
-        swap(str[i],str[n-1-i]);
-
-      }
-      return str;
+string reverseString(string str, int n)
+{
+    for (int i = 0; i < n / 2; i++)
+    {
+        swap(str[i], str[n - 1 - i]);
+    }
+    return str;
 }
 
 bool checkPalindrome(string str, int len)
 {
 
-   string result=reverseString(str,len);
+    //    string result=reverseString(str,len);
 
-   if(result==str){
+    //    return result==str;
+
+    int s = 0;
+    int e = len - 1;
+    while (s <= e)
+    {
+        if (str[s] != str[e])
+        {
+            return 0;
+        }
+        else
+        {
+            s++;
+            e--;
+        }
+    }
+
     return 1;
-
-   }
-   else {
-    return 0;
-   }
-
-
-    
 }
 
 int main()
@@ -33,7 +42,7 @@ int main()
     int l = str.length();
     bool result = checkPalindrome(str, l);
 
-    cout<<"the string is "<<result;
+    cout << "the string is " << result;
 
     return 0;
 }
