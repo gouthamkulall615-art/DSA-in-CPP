@@ -3,6 +3,7 @@ using namespace std;
 
 string replaceSpaces(string &str)
 {
+    //it as space complexity of O(1)
     // string temp = "";
     // for (int i = 0; i < str.length(); i++)
     // {
