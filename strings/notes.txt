@@ -35,3 +35,11 @@ ss  >> word   -> reads from string
 Use:
 Split a string into words automatically.
 Ignores extra spaces, leading spaces, and trailing spaces.
+
+==============================================
+
+strcmp(s1,s2)
+
+strcpy(dest,src)
+
+strcat(s1,s2)
