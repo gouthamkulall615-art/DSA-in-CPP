@@ -1,0 +1,268 @@
+================================================================
+     C++ BUILT-IN FUNCTIONS — LEETCODE CHEATSHEET
+================================================================
+
+----------------------------------------------------------------
+1. STRING FUNCTIONS  (string s = "hello")
+----------------------------------------------------------------
+
+s.size() / s.length()     → number of characters
+                             e.g. "hello".size() = 5
+
+s.substr(pos, len)         → substring starting at pos, of length len
+                             e.g. "hello".substr(1, 3) = "ell"
+
+s.find(str)                → index where str is found, else string::npos
+                             e.g. "hello".find("ll") = 2
+
+s.rfind(str)               → last occurrence index
+                             e.g. "hello".rfind("l") = 3
+
+s.empty()                  → true if string is empty
+
+s.push_back(ch)            → append a character
+                             e.g. s.push_back('a')
+
+s.pop_back()               → remove last character
+
+s.erase(pos, len)          → remove len chars from pos
+                             e.g. "hello".erase(1, 2) = "hlo"
+
+s.insert(pos, str)         → insert string at pos
+                             e.g. "hllo".insert(1, "e") = "hello"
+
+s.replace(pos, len, str)   → replace len chars from pos with str
+
+s[i]                       → access character at index i
+
+s.front() / s.back()       → first / last character
+
+stoi(s)                    → string to int
+stol(s)                    → string to long
+stod(s)                    → string to double
+to_string(num)             → int/double to string
+
+s.compare(t)               → 0 if equal, <0 if s < t, >0 if s > t
+
+reverse(s.begin(),s.end()) → reverse string in place
+
+sort(s.begin(), s.end())   → sort characters in string
+
+----------------------------------------------------------------
+2. VECTOR FUNCTIONS  (vector<int> v = {3,1,2})
+----------------------------------------------------------------
+
+v.push_back(x)             → add x at the end
+v.pop_back()               → remove last element
+v.size()                   → number of elements
+v.empty()                  → true if empty
+v.front() / v.back()       → first / last element
+v[i]                       → access element at index i
+
+v.insert(v.begin()+i, x)  → insert x at index i
+v.erase(v.begin()+i)       → remove element at index i
+v.erase(v.begin()+i,
+         v.begin()+j)      → remove elements from i to j-1
+
+v.clear()                  → remove all elements
+v.resize(n)                → resize to n elements
+v.resize(n, val)           → resize and fill new slots with val
+
+v.assign(n, val)           → fill vector with n copies of val
+
+sort(v.begin(), v.end())               → sort ascending
+sort(v.begin(), v.end(), greater<int>()) → sort descending
+
+reverse(v.begin(), v.end())            → reverse vector
+
+*max_element(v.begin(), v.end())       → max value
+*min_element(v.begin(), v.end())       → min value
+
+accumulate(v.begin(), v.end(), 0)      → sum of all elements
+                                          (include <numeric>)
+
+find(v.begin(), v.end(), x)            → iterator to x, or v.end()
+
+count(v.begin(), v.end(), x)           → count occurrences of x
+
+binary_search(v.begin(), v.end(), x)   → true if x found (sorted only)
+
+lower_bound(v.begin(), v.end(), x)     → iterator to first element >= x
+upper_bound(v.begin(), v.end(), x)     → iterator to first element > x
+
+unique(v.begin(), v.end())             → removes consecutive duplicates
+                                          (sort first, then use with erase)
+
+----------------------------------------------------------------
+3. MATH FUNCTIONS  (#include <cmath>)
+----------------------------------------------------------------
+
+abs(x)          → absolute value (int)
+fabs(x)         → absolute value (float/double)
+sqrt(x)         → square root
+pow(x, y)       → x raised to power y
+ceil(x)         → round up
+floor(x)        → round down
+round(x)        → round to nearest
+log(x)          → natural log
+log2(x)         → log base 2
+log10(x)        → log base 10
+max(a, b)       → maximum of two values
+min(a, b)       → minimum of two values
+
+INT_MAX         → 2147483647  (max int value)
+INT_MIN         → -2147483648 (min int value)
+LLONG_MAX       → max long long value
+LLONG_MIN       → min long long value
+
+----------------------------------------------------------------
+4. MAP FUNCTIONS  (map<int,int> or unordered_map<int,int> mp)
+----------------------------------------------------------------
+
+mp[key]                    → access/insert value at key
+mp[key] = val              → set value
+mp.count(key)              → 1 if key exists, 0 if not
+mp.find(key)               → iterator to key, or mp.end()
+mp.erase(key)              → delete key
+mp.size()                  → number of key-value pairs
+mp.empty()                 → true if empty
+mp.clear()                 → remove all entries
+
+for (auto& [k, v] : mp)    → iterate over all pairs
+
+NOTE: unordered_map is O(1) average, map is O(log n) sorted
+
+----------------------------------------------------------------
+5. SET FUNCTIONS  (set<int> or unordered_set<int> st)
+----------------------------------------------------------------
+
+st.insert(x)               → insert x
+st.erase(x)                → remove x
+st.count(x)                → 1 if x exists, 0 if not
+st.find(x)                 → iterator to x, or st.end()
+st.size()                  → number of elements
+st.empty()                 → true if empty
+st.clear()                 → remove all elements
+
+*st.begin()                → smallest element (in set, sorted)
+*st.rbegin()               → largest element
+
+NOTE: unordered_set is O(1) average, set is O(log n) sorted
+
+----------------------------------------------------------------
+6. STACK FUNCTIONS  (stack<int> stk)
+----------------------------------------------------------------
+
+stk.push(x)                → push x on top
+stk.pop()                  → remove top (does NOT return value)
+stk.top()                  → peek at top
+stk.empty()                → true if empty
+stk.size()                 → number of elements
+
+----------------------------------------------------------------
+7. QUEUE FUNCTIONS  (queue<int> q)
+----------------------------------------------------------------
+
+q.push(x)                  → add x to back
+q.pop()                    → remove front (does NOT return value)
+q.front()                  → peek at front
+q.back()                   → peek at back
+q.empty()                  → true if empty
+q.size()                   → number of elements
+
+----------------------------------------------------------------
+8. PRIORITY QUEUE  (heap)
+----------------------------------------------------------------
+
+priority_queue<int> pq                    → max-heap (default)
+priority_queue<int,
+  vector<int>, greater<int>> pq           → min-heap
+
+pq.push(x)                 → insert x
+pq.pop()                   → remove top
+pq.top()                   → peek at top (max or min)
+pq.empty()                 → true if empty
+pq.size()                  → number of elements
+
+----------------------------------------------------------------
+9. PAIR  (pair<int,int> p)
+----------------------------------------------------------------
+
+make_pair(a, b)            → create a pair
+p.first                    → first element
+p.second                   → second element
+
+Pairs are sorted by first, then second by default.
+
+----------------------------------------------------------------
+10. ALGORITHM FUNCTIONS  (#include <algorithm>)
+----------------------------------------------------------------
+
+sort(begin, end)            → sort ascending
+sort(begin, end, cmp)       → sort with custom comparator
+reverse(begin, end)         → reverse range
+swap(a, b)                  → swap two values
+fill(begin, end, val)       → fill range with value
+copy(src_begin, src_end,
+     dst_begin)             → copy range
+
+next_permutation(begin, end) → next lexicographic permutation
+prev_permutation(begin, end) → previous permutation
+
+max_element(begin, end)     → iterator to max
+min_element(begin, end)     → iterator to min
+
+lower_bound(begin, end, x)  → first element >= x (sorted)
+upper_bound(begin, end, x)  → first element >  x (sorted)
+
+binary_search(begin, end, x) → true if x found (sorted)
+
+count(begin, end, x)        → count of x in range
+find(begin, end, x)         → iterator to x
+
+gcd(a, b)                   → greatest common divisor  (C++17)
+lcm(a, b)                   → least common multiple    (C++17)
+
+__gcd(a, b)                 → gcd (older compilers)
+
+----------------------------------------------------------------
+11. USEFUL TRICKS
+----------------------------------------------------------------
+
+// Integer overflow: use long long
+long long ans = (long long)a * b;
+
+// Check if a number is even/odd
+if (n % 2 == 0)  → even
+if (n & 1)       → odd (faster)
+
+// Divide and round up (ceiling division)
+int ceil_div = (a + b - 1) / b;
+
+// Bit tricks
+x & (x-1)        → clear lowest set bit
+x & (-x)         → isolate lowest set bit
+__builtin_popcount(x)  → count set bits (1s) in x
+
+// Swap without temp
+a ^= b; b ^= a; a ^= b;
+
+// Initialize 2D vector
+vector<vector<int>> dp(n, vector<int>(m, 0));
+
+================================================================
+     MOST USED IN LEETCODE (QUICK REFERENCE)
+================================================================
+
+sort()              → almost every problem
+unordered_map[]     → frequency count, two sum
+unordered_set       → duplicate check
+stack               → valid parentheses, monotonic stack
+priority_queue      → k-th largest, Dijkstra
+lower/upper_bound   → binary search problems
+substr()            → string manipulation
+stoi() / to_string()→ string <-> int conversion
+INT_MAX / INT_MIN   → dp initialization
+__builtin_popcount()→ bit manipulation problems
+
+================================================================
