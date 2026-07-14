@@ -95,44 +95,119 @@
 
 //optimal solution
 
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// class Solution {
+// public:
+//     vector<vector<int>> threeSum(vector<int>& nums) {
+//         vector<vector<int>> ans;
+//         sort(nums.begin(), nums.end());
+//         int n = nums.size();
+
+//         for (int i = 0; i < n; i++) {
+//             // Skip duplicate first elements
+//             if (i > 0 && nums[i] == nums[i - 1])
+//                 continue;
+
+//             int j = i + 1;
+//             int k = n - 1;
+
+//             while (j < k) {
+//                 int sum = nums[i] + nums[j] + nums[k];
+
+//                 if (sum < 0) {
+//                     j++;
+//                 } else if (sum > 0) {
+//                     k--;
+//                 } else {
+//                     ans.push_back({nums[i], nums[j], nums[k]});
+
+//                     j++;
+//                     k--;
+
+//                     // Skip duplicate second elements
+//                     while (j < k && nums[j] == nums[j - 1])
+//                         j++;
+
+//                     // Skip duplicate third elements
+//                     while (j < k && nums[k] == nums[k + 1])
+//                         k--;
+//                 }
+//             }
+//         }
+
+//         return ans;
+//     }
+// };
+
+// int main() {
+//     vector<int> nums = {-1, 0, 1, 2, -1, -4};
+
+//     Solution obj;
+//     vector<vector<int>> result = obj.threeSum(nums);
+
+//     cout << "Triplets are:\n";
+//     for (auto &triplet : result) {
+//         cout << "[ ";
+//         for (int x : triplet) {
+//             cout << x << " ";
+//         }
+//         cout << "]\n";
+//     }
+
+//     return 0;
+// }
+
+
+//optimal solution using the two pointer concept
 #include <bits/stdc++.h>
 using namespace std;
 
 class Solution {
 public:
-    vector<vector<int>> threeSum(vector<int>& nums) {
-        vector<vector<int>> ans;
-        sort(nums.begin(), nums.end());
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+
         int n = nums.size();
+        sort(nums.begin(), nums.end());
+        vector<vector<int>> ans;
 
         for (int i = 0; i < n; i++) {
-            // Skip duplicate first elements
-            if (i > 0 && nums[i] == nums[i - 1])
-                continue;
 
-            int j = i + 1;
-            int k = n - 1;
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
 
-            while (j < k) {
-                int sum = nums[i] + nums[j] + nums[k];
+            for (int j = i + 1; j < n; j++) {
 
-                if (sum < 0) {
-                    j++;
-                } else if (sum > 0) {
-                    k--;
-                } else {
-                    ans.push_back({nums[i], nums[j], nums[k]});
+                if (j != i + 1 && nums[j] == nums[j - 1]) continue;
 
-                    j++;
-                    k--;
+                int k = j + 1;
+                int l = n - 1;
 
-                    // Skip duplicate second elements
-                    while (j < k && nums[j] == nums[j - 1])
-                        j++;
+                while (k < l) {
 
-                    // Skip duplicate third elements
-                    while (j < k && nums[k] == nums[k + 1])
-                        k--;
+                    long long sum = nums[i];
+                    sum += nums[j];
+                    sum += nums[k];
+                    sum += nums[l];
+
+                    if (sum == target) {
+
+                        vector<int> temp = {nums[i], nums[j], nums[k], nums[l]};
+                        ans.push_back(temp);
+
+                        k++;
+                        l--;
+
+                        while (k < l && nums[k] == nums[k - 1]) k++;
+                        while (k < l && nums[l] == nums[l + 1]) l--;
+
+                    }
+                    else if (sum < target) {
+                        k++;
+                    }
+                    else {
+                        l--;
+                    }
                 }
             }
         }
@@ -142,18 +217,35 @@ public:
 };
 
 int main() {
-    vector<int> nums = {-1, 0, 1, 2, -1, -4};
+
+    int n;
+    cout << "Enter the size of the array: ";
+    cin >> n;
+
+    vector<int> nums(n);
+
+    cout << "Enter the elements of the array:\n";
+    for (int i = 0; i < n; i++) {
+        cin >> nums[i];
+    }
+
+    int target;
+    cout << "Enter the target: ";
+    cin >> target;
 
     Solution obj;
-    vector<vector<int>> result = obj.threeSum(nums);
+    vector<vector<int>> ans = obj.fourSum(nums, target);
 
-    cout << "Triplets are:\n";
-    for (auto &triplet : result) {
-        cout << "[ ";
-        for (int x : triplet) {
-            cout << x << " ";
+    if (ans.empty()) {
+        cout << "No quadruplets found." << endl;
+    } else {
+        cout << "Quadruplets are:\n";
+        for (auto &quad : ans) {
+            for (int x : quad) {
+                cout << x << " ";
+            }
+            cout << endl;
         }
-        cout << "]\n";
     }
 
     return 0;
