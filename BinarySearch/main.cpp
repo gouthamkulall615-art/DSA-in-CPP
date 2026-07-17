@@ -1,47 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int binarySearch(int arr[], int size, int key)
+int main()
 {
-    int start = 0;
-    int end = size - 1;
-    int mid = (start + end) / 2;
 
+    int arr[] = {3, 4, 6, 7, 9, 12, 16, 17};
+    int n = 8;
+    int target = 0;
+
+    int start = 0;
+    int end = n - 1;
     while (start <= end)
     {
-        if (arr[mid] == key)
+        int mid = (start + end) / 2;
+        if (target == arr[mid])
         {
-            return mid;
+            cout << "Element " << arr[mid] << " found at index " << mid << endl;
+            break;
         }
-        if (key > arr[mid])
+        else if (target > arr[mid])
         {
             start = mid + 1;
         }
-        else
+        else if (target < arr[mid])
         {
-            end = end - 1;
+            end = mid - 1;
         }
-
-        mid = (start + end) / 2;
     }
-    return -1;
-}
 
-int main()
-{
-    int arr[6] = {1, 2, 3, 4, 5, 6};
+    cout << "element not found " << endl;
 
-    int index = binarySearch(arr, 6, 5);
-    cout << "Index of the key is" << index << endl;
     return 0;
 }
-
-/*for optimization of the mid
-mid=start+(end-start)/2;
-
-we have used this becuase the mid=(start+end)/2
-is out of interger range like start=2^31-1 and end=2^31-1 and if we add both it will be out of range
-
-
-time complexity =O(log n)
-*/
