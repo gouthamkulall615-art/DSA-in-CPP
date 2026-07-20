@@ -1,74 +1,63 @@
-#include <bits/stdc++.h>
+
+
+#include <iostream>
+#include <vector>
 using namespace std;
 
-int getPivot(int arr[], int n)
-{
-    int start = 0;
-    int end = n - 1;
-    int mid = start + (end - start) / 2;
+bool search(vector<int>& nums, int target) {
 
-    while (start < end)
-    {
-        if (arr[mid] >= arr[0])
-        {
-            start = mid + 1;
-        }
-        else
-        {
-            end = mid;
-        }
-        mid = start + (end - start) / 2;
-    }
-    return start;
-}
+    int low = 0;
+    int high = nums.size() - 1;
 
-int binarySearch(int arr[], int start, int end, int key)
-{
+    while (low <= high) {
 
-    int mid = (start + end) / 2;
+        int mid = low + (high - low) / 2;
 
-    while (start <= end)
-    {
-        if (arr[mid] == key)
-        {
+        // Target found
+        if (nums[mid] == target)
             return mid;
-        }
-        if (key > arr[mid])
-        {
-            start = mid + 1;
-        }
-        else
-        {
-            end = mid - 1;
+
+
+        // Left half is sorted
+        if (nums[low] <= nums[mid]) {
+
+            if (nums[low] <= target &&
+                target < nums[mid]) {
+
+                high = mid - 1;
+            }
+            else {
+                low = mid + 1;
+            }
         }
 
-        mid = (start + end) / 2;
+        // Right half is sorted
+        else {
+
+            if (nums[mid] < target &&
+                target <= nums[high]) {
+
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
     }
+
     return -1;
 }
 
-int findPostion(int arr[], int n, int k)
+int main() {
 
-{
-    int pivot = getPivot(arr, n);
-    if (k >= arr[pivot] && k <= arr[n - 1])
+    vector<int> nums = {7,8,9,1,2,3,4,5,6};
 
-    { // search in the second sorted part
-        return binarySearch(arr, pivot, n - 1, k);
-    }
+    int target = 0;
+
+    if (search(nums, target))
+        cout << "Target Found";
     else
-    {
-        // search in the first sorted part
-        return binarySearch(arr, 0, n - 1, k);
-    }
-}
-
-int main()
-{
-
-    int arr[5] = {7, 9, 1, 2, 3};
-    int ans = findPostion(arr, 5, 10);
-    cout << "element fount at" << ans;
+        cout << "Target Not Found";
 
     return 0;
 }
