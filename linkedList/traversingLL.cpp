@@ -49,6 +49,33 @@ void traverse(Node *head)
 
     cout << endl;
 }
+int lengthOfLL(Node *head)
+{
+    int cnt = 0;
+    Node *temp = head;
+
+    while (temp != nullptr)
+    {
+
+        temp = temp->next;
+        cnt++;
+    }
+    return cnt;
+}
+
+int searchLL(Node *head, int val)
+{
+    Node *temp = head;
+
+    while (temp != nullptr)
+    {
+
+        if (temp->data == val)
+            return 1;
+        temp = temp->next;
+    }
+    return 0;
+}
 
 int main()
 {
@@ -66,8 +93,11 @@ int main()
 
     Node *head = convertArrToLL(arr);
 
-    cout << "Linked List: ";
-    traverse(head);
+    // cout << "Linked List: ";
+    // traverse(head);
 
+    // cout << lengthOfLL(head);
+
+    cout << searchLL(head, 5);
     return 0;
 }
