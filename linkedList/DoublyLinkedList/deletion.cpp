@@ -81,12 +81,54 @@ Node *deleteTail(Node *head)
     return head;
 }
 
+Node *removeKthElement(Node *head, int k)
+{
+    if (head == NULL)
+    {
+        return NULL;
+    }
+    int cnt = 0;
+    Node *kNode = head;
+    while (kNode != NULL)
+    {
+        cnt++;
+        if (cnt == k)
+            break;
+        kNode = kNode->next;
+    }
+
+    Node *prev = kNode->back;
+    Node *front = kNode->next;
+    if (prev == NULL && front == NULL)
+    {
+        return NULL;
+    }
+    else if (prev == NULL)
+    {
+        return deleteHead(head);
+    }
+    else if (front == NULL)
+    {
+        return deleteTail(head);
+    }
+
+    prev->next = front;
+    front->back = prev;
+
+    kNode->next = nullptr;
+    kNode->back = nullptr;
+
+    delete (kNode);
+    return head;
+}
+
 int main()
 {
     vector<int> arr = {12, 3, 4, 5};
     Node *head = convertArr2DLL(arr);
     // head = deleteHead(head);
-    head = deleteTail(head);
+    // head = deleteTail(head);
+    head = removeKthElement(head, 3);
     print(head);
 
     return 0;
