@@ -66,13 +66,45 @@ Node *insertBeforeTail(Node *head, int val)
 
     return head;
 }
+
+Node *insertBeforeKthElement(Node *head, int k, int val)
+{
+    if (k == 1)
+    {
+        return insertBeforeHead(head, val);
+    }
+    Node *temp = head;
+    int cnt = 0;
+    while (temp != NULL)
+    {
+        cnt++;
+        if (cnt == k)
+            break;
+        temp = temp->next;
+    }
+
+    Node *prev = temp->back;
+    Node *newNode = new Node(val, temp, prev);
+    prev->next = newNode;
+    temp->back = newNode;
+    return head;
+}
+void insertBeforeNode(Node *node, int val)
+{
+    Node *prev = node->back;
+    Node *newNode = new Node(val, node, prev);
+    prev->next = newNode;
+    node->back = newNode;
+}
 int main()
 {
 
     vector<int> arr = {12, 5, 6, 7};
     Node *head = convertArr2DLL(arr);
     // head = insertBeforeHead(head, 10);
-    head = insertBeforeTail(head, 10);
+    // head = insertBeforeTail(head, 10);
+    // head = insertBeforeKthElement(head, 3, 56);
+    insertBeforeNode(head->next, 56);
     print(head);
 
     return 0;
