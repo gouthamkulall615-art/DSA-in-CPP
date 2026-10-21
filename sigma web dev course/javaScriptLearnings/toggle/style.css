@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+
+}
+ .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 45px;
+    
+}
+button {
+    padding: 12px 30px;
+    border: none;
+  border-radius: 12px;
+  cursor: pointer;
+
+}
+.center{
+    background-color: black;
+    
+}

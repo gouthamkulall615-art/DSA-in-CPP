@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css selectors</title>
+    <style>
+        /*element selcltor*/
+        /* div{
+            background-color: red;
+        } */
+         /* class selector */
+         .red{
+            background-color: red;
+         }
+         /* id selector */
+         #green{
+            background-color: green;
+         }
+         /* child selctor */
+div >p { /*----->direct child only  */
+    color: blue;
+    background-color: brown;
+}
+
+/* desecendent slectores */
+div p{/*//any div*/
+    color: blue;
+}
+/* universal selector */
+*{
+    margin: 0;
+    padding: 0;
+}
+/* pseudso selectors */
+a:visited{
+    color: yellow;
+}
+a:hover{
+    background-color: pink;
+}
+
+    </style>
+</head>
+<body>
+    <div class="red">
+        i am div
+    <p>i am a paragrah</p>
+    </div>
+    <div id="green">
+        i am another
+    </div>
+    <div>
+        <a href="https://www.google.com">go to google</a>
+    </div>
+</body>
+</html>

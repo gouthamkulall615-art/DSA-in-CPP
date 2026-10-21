@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercise 2</title>
+</head>
+
+<body>
+    <input onkeyup="showName() " id="name" placeholder="type something">
+    <p class="result"></p>
+</body>
+<script>
+    function showName() {
+        let input = document.querySelector('#name').value;
+        document.querySelector('.result').innerText = input
+    }
+</script>
+
+</html>

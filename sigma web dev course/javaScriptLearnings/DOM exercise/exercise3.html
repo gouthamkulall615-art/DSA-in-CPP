@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercise 3</title>
+
+</head>
+
+<body>
+    <p class="display"></p>
+    <button onclick=" showNum(this)
+    " class="press">1</button>
+    <button onclick=" showNum(this)
+    " class="press">2</button>
+    <button onclick=" showNum(this)
+    " class="press">3</button>
+    <button onclick=" showNum(this)
+    " class="press">+</button>
+
+
+</body>
+<script>
+    function showNum(btn) {
+        let num = btn.innerText;
+        let display = document.querySelector('.display')
+        display.innerText += num;
+    }
+</script>
+
+</html>

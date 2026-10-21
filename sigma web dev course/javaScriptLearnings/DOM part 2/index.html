@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM projects</title>
+</head>
+<style>
+    p {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    .js-subscribe {
+        border: none;
+        padding: 12px 12px;
+        border-radius: 24px;
+        font-weight: 400;
+        background-color: black;
+        color: white;
+    }
+</style>
+
+<body>
+    <p>youtube subscribe button</p>
+    <button onclick="
+  subscribe();
+  
+   " class="js-subscribe">subscribe</button>
+
+</body>
+<script>
+    function subscribe() {
+        const buttonEle = document.querySelector('.js-subscribe')
+        if (buttonEle.innerHTML === 'subscribe') {
+            buttonEle.innerHTML = 'subscribed';
+             buttonEle.style.backgroundColor = "rgb(240,240,240)"
+             buttonEle.style.color="black"
+        }
+        else {
+            buttonEle.innerHTML = 'subscribe'
+             buttonEle.style.backgroundColor = "black"
+             buttonEle.style.color="white"
+        }
+       
+    }
+
+</script>
+
+</html>

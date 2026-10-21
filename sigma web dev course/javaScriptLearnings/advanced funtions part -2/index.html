@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="" class="js-button">Click</button>
+    <script>
+        // const buttonElement = document.querySelector('.js-button')
+        // const eventListner = () => {
+        //     console.log('click');
+        // };
+        // buttonElement.addEventListener('click', eventListner);
+
+        // buttonElement.removeEventListener('click', eventListner);
+        // [
+        //     'make dinner',
+        //     'wash dishes',
+        //     'watch youtube'
+        // ].forEach((value, index) => {
+        //     if (value === 'wash dishes') {
+        //         return;
+        //     }
+        // });
+
+        // const regularFunction = function (param) {
+        //     console.log('hello');
+        // };
+        // const arrowFunction = (param, param2) => {
+        //     console.log('hello');
+        //     return 5;
+        // };
+        // arrowFunction();
+
+        // const object2 = {
+        //     method: () => {
+
+        //     },
+        //     method() {
+
+        //     }
+        // };
+
+        console.log([1, -3, 5].filter((value, index) => {
+            //     if (value >= 0) {
+            //         return true;//true gives every value in the array
+            //     }
+            //    else{
+            //      return false;
+            //    }//false gives empty array
+            return value >= 0
+
+        }));
+
+        console.log([1, 1, 3].map((value, index) => {
+            return value * 2;
+
+        }))
+
+
+        //shortcut for the arrow functions
+        console.log([1, 1, 3].map(value => value * 2))
+    </script>
+</body>
+
+</html>

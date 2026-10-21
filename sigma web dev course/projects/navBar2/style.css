@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ---------- LOGO ---------- */
+h3 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: rgb(14, 89, 194);
+  padding: 0.5em 0.9em;
+  border-radius: 23px;
+  white-space: nowrap; /* VERY IMPORTANT */
+}
+
+/* ---------- NAV ---------- */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin: 12px;
+  padding: 12px 16px;
+
+  background-color: rgb(125, 198, 246);
+  box-shadow: 0 0 40px rgb(139, 209, 253);
+  border-radius: 9px;
+}
+
+/* ---------- MENU ---------- */
+ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+
+  margin-left: auto;
+  padding: 0;
+
+  flex-wrap: wrap;        /* menu wraps */
+  justify-content: flex-end;
+  flex: 1;                /* takes remaining space */
+}
+
+ul li {
+  padding: 0.5em 0.9em;
+  font-size: 1rem;
+  color: rgb(235, 234, 234);
+  border-radius: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+h3:hover{
+    box-shadow: 0 0 30px aqua;
+}
+li:hover{
+    box-shadow: 0 0 25px rgb(94, 94, 239);
+}
+
+/* ---------- SMALL SCREENS ---------- */
+@media (max-width: 600px) {
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  ul {
+    gap: 0.6rem;
+  }
+
+  ul li {
+    font-size: 0.9rem;
+    padding: 0.4em 0.7em;
+  }
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event bubbling</title>
+</head>
+<style>
+    .child {
+        border: 2px solid black;
+        padding: 14px;
+        margin: 14px;
+        background-color: rgb(106, 232, 171);
+    }
+
+    .childcontainer {
+        border: 2px solid black;
+        padding: 14px;
+        margin: 14px;
+        background-color: rgb(56, 173, 236);
+    }
+
+    .container {
+        border: 2px solid black;
+        padding: 14px;
+        margin: 14px;
+        background-color: rgb(26, 89, 167);
+    }
+</style>
+
+<body>
+    <div class="container">
+        <section class="childcontainer">
+            <div class="child">
+                I am a child
+            </div>
+        </section>
+    </div>
+    <script>
+        document.querySelector(".child").addEventListener("click", (e) => {
+            e.stopPropagation()
+            alert("hey child was clicked")
+        })
+
+        document.querySelector(".childcontainer").addEventListener("click", (e) => {
+            alert("hey child container was clicked")
+        })
+
+        document.querySelector(".container").addEventListener("click", (e) => {
+            alert("hey container was clicked")
+        })
+
+        function getRandomColor(){
+            let val1= Math.ceil(0+Math.random()*255)
+            let val2= Math.ceil(0+Math.random()*255)
+            let val3= Math.ceil(0+Math.random()*255)
+            return `rgb(${val1},${val2},${val3})`
+        }
+
+        // let a=setInterval(() => {
+        //     document.querySelector(".childcontainer").style.background=getRandomColor();
+        // }, 1000);
+        // console.log(a)
+
+
+        
+        let a=setTimeout(() => {
+            document.querySelector(".childcontainer").style.background=getRandomColor();
+        }, 1000);
+        console.log(a)
+
+        
+    </script>
+</body>
+
+</html>

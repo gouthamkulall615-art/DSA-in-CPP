@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercise</title>
+</head>
+
+<body>
+    <button class="btn" onclick="change()">Add TO Cart</button>
+    <p class="add"></p>
+    <script>
+        const button = document.querySelector('.btn');
+        const added = document.querySelector('.add');
+        let clicked = false;
+        let timeoutId;
+        function change() {
+            added.textContent = 'Added';
+
+            clearTimeout(timeoutId);
+
+            timeoutId = setTimeout(() => {
+                added.textContent = ' ';
+            }, 2000);
+        }
+        /*let isAutoPlaying = false;
+let intervalId;
+
+function autoplay() {
+    if (!isAutoPlaying) {
+        intervalId = setInterval(function () {
+            const playerMove = pickComputerMove();
+            playGame(playerMove);
+        }, 1000);
+        isAutoPlaying = true;
+    }
+    else {
+        clearInterval(intervalId);
+        isAutoPlaying = false;
+    }*/
+    </script>
+</body>
+
+</html>

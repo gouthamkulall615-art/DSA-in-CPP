@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css float and clear</title>
+    <style>
+        .cards {
+            border: 2px solid black;
+            display: flow-root;
+            /*image fits clearly */
+        }
+
+        img {
+            float: left;
+        }
+
+        .card {
+            border: 2px solid red;
+        }
+
+        .card:nth-child(3) {
+            background-color: aqua;
+            /* clear: right; */
+            clear: both;
+            /*right side allow nahi  kartha hai*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cards">
+        <img src="https://static.vecteezy.com/system/resources/previews/023/788/274/non_2x/tourist-man-in-hat-relaxing-on-boat-at-the-beautiful-islands-back-view-generative-ai-photo.jpg"
+            alt="" width="230">
+        <div class="card"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus commodi facilis inventore
+            animi nesciunt odio suscipit, a qui molestiae expedita exercitationem ad provident?</div>
+        <div class="card">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae exercitationem animi debitis
+            porro blanditiis repellendus corporis qui. Totam quod modi earum iste assumenda ducimus, ex animi dolorum
+            hic eos neque, numquam voluptates eveniet eligendi fuga cumque quisquam veritatis incidunt quibusdam
+            exercitationem, consequuntur alias. Quaerat iusto saepe omnis nostrum minima recusandae, dolore autem,
+            delectus vitae dolor aperiam repellendus eligendi mollitia corporis? Tempore et ut eius facilis provident
+            eligendi dolore, ratione soluta exercitationem sunt vero enim, placeat tempora? Temporibus, mollitia enim
+            modi sint autem, sequi distinctio sunt esse delectus nemo obcaecati, quis qui nulla sapiente at tempore
+            atque alias veniam eveniet provident.</div>
+        <div class="card"> card3</div>
+    </div>
+</body>
+
+</html>

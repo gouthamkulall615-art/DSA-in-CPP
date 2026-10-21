@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Shipping Calculator</title>
+</head>
+<style>
+#box{
+    padding: 10px 10px;
+}
+#btn{
+    padding: 10px ;
+    background-color: green;
+    color: white;
+    border: none;
+}
+
+</style>
+<body>
+    <p> Amazon Shipping Calculator</p>
+    <p>orders under $40 =+$10</p>
+    <p>order over$40=FREE shipping</p>
+
+    <input type="text" id="box" placeholder="Cost of order">
+    <button onclick=" calculate()
+" id="btn">calculate</button>
+
+    <p class="total-amount"></p>
+</body>
+<script>
+    function calculate() {
+        let amount = Number(document.querySelector('input[type="text"]').value);
+        if (amount <= 40) {
+            amount += 10;
+        }
+
+        document.querySelector(".total-amount").innerHTML = `$${amount}`;
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+    margin: 0;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    /* Stacks heading and inputs vertically */
+    align-items: center;
+    /* Centers items horizontally */
+    justify-content: flex-start;
+    /* Starts items from the top */
+
+    height: auto;
+    /* Let the content define the height */
+    min-height: 400px;
+    /* Or use a fixed minimum */
+    width: 310px;
+    /* 20vw is very thin on most screens */
+    /* border: 2px solid #000; */
+    /* padding: 20px; */
+    border-style: none;
+
+    /* Adds space inside the border */
+    gap: 20px;
+    border-radius: 15px;
+    /* Creates equal space between all elements */
+    /* background: linear-gradient(to bottom right ,#008cff, #e100ff); */
+    overflow: hidden;
+    box-shadow: 0 0 34px grey;
+}
+
+
+
+.login-form .heading {
+    width: 100%;
+    padding: 25px 0;
+
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+
+    background: linear-gradient(135deg, #008cff, #e100ff);
+    color: white;
+
+    border-radius: 15px 15px 0 0; /* ONLY TOP corners */
+}
+
+.login-form >*:not(.heading){
+    padding: 0 20px;
+}
+/* Optional: Make inputs look better */
+.email {
+    margin-top: 23px;
+
+}
+
+input {
+    width: 100%;
+    padding: 10px 29px;
+    border: 1px solid #ccc;
+    border-radius: 40px;
+
+}
+
+.rem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 10px 0;
+
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+label {
+    font-size: 0.9rem;
+    white-space: nowrap;
+
+}
+
+.forget-link {
+    padding: 0 -2px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: rgb(6, 94, 246);
+
+
+}
+
+.forget-link:hover {
+    text-decoration: underline;
+}
+
+
+
+.login-button button {
+    padding: 8px 90px;
+    font-weight: bold;
+    color: white;
+    border-radius: 34px;
+    border-style: none;
+    background: linear-gradient(to bottom right, #008cff, #e100ff);
+    transition: opacity 0.3s;
+}
+
+.login-button button:hover {
+    opacity: 0.9;
+}
+
+
+.last-lines {
+    font-size: 0.8rem;
+
+}
+
+.last-lines .link a {
+    text-decoration: none;
+    color: rgb(6, 94, 246);
+}

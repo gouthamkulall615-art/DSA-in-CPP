@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercise 1</title>
+</head>
+
+<body>
+    <input type="text" id="username" placeholder="name">
+    <button onclick="
+    Submitname();
+    ">submit</button>
+    <p class="output"></p>
+</body>
+<script>
+    function Submitname() {
+        let uname = document.querySelector('#username').value;
+        document.querySelector('.output').innerText = `your name is :${uname}`;
+    }
+</script>
+
+</html>

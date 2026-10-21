@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>basic layout</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0;
+        }
+        nav{
+            position: sticky;
+            top: 0px;
+            border: 2px solid black;
+            padding: 23px;
+            background-color: rgb(179, 109, 245);
+            border: none;
+        }
+        nav p{
+            text-align: center;
+            color: white;
+        
+        }
+        /* nav p img{
+            position: fixed;
+        } */
+    ul li{
+        display: inline;
+        padding: 19px;
+        font-size: 19px;
+        font-weight: bold;
+
+    }
+   
+
+    .box1{
+        height: 550px;
+        width: 435px;
+        border: 2px solid black;
+        padding: 45px 90px;
+        margin: 45px;
+         justify-content: center;
+      align-items: center;
+
+          border-radius: 23px;
+          background-color: rgb(185, 149, 219);
+    }
+    .box2{
+        height: 550px;
+        width: 435px;
+        border: 2px solid black;
+         padding: 45px 90px;
+        margin: 45px;
+         justify-content: center;
+      align-items: center;
+
+          border-radius: 23px;
+            background-color: rgb(185, 149, 219);
+    }
+  
+    .boxes{
+       
+        height: 100vh;
+        display: flex;
+        /* padding: 65px 30px 20px 35px;
+        margin: 65px; */
+        background-color: rgb(230, 216, 243);
+
+    }
+    .boxes img{
+        
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+
+
+    }
+   
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+    <div class="boxes">
+        <div class="box1"></div>
+        <div class="box2"></div>
+         <img src="https://img.icons8.com/?size=100&id=1vY22lDciPbi&format=png&color=000000" alt="" width="230" height="200">
+    </div>
+    <nav>
+        <p>Thank you for visiting the website</p>
+       
+    </nav>
+</body>
+</html>
